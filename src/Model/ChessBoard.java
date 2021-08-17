@@ -40,29 +40,6 @@ public class ChessBoard {
         this.cell = cell;
     }
 
-    public void pucker() {
-        System.out.print("Length: \n");
-        int length = Console.getNumber();
-        System.out.print("Width: \n");
-        int width = Console.getNumber();
-        System.out.print("Cell: \n");
-        String cell = Console.getCell();
-        ChessBoard chessBoard = new ChessBoard(length, width, cell);
-        System.out.println(chessBoard.build());
-    }
 
-    public String build() {
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < getLength(); i++) {
-            for (int j = 0; j < getWidth(); j++) {
-                if ((i + j) % 2 == 1) {
-                    result.append(" ");
-                } else {
-                    result.append(getCell());
-                }
-            }
-            result.append("\n");
-        }
-        return String.valueOf(result);
-    }
+
 }
