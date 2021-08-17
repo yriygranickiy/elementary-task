@@ -1,6 +1,6 @@
-package Service;
+package service;
 
-import Model.ChessBoard;
+import model.ChessBoard;
 
 public class ChessBoardService {
 

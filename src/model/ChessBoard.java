@@ -1,6 +1,4 @@
-package Model;
-
-import Utils.Console;
+package model;
 
 public class ChessBoard {
     private int length;
@@ -12,34 +10,16 @@ public class ChessBoard {
         this.width = width;
         this.cell = cell;
     }
-
-    public ChessBoard() {
-    }
-
     public int getLength() {
         return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
     }
 
     public int getWidth() {
         return width;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
     public String getCell() {
         return cell;
     }
-
-    public void setCell(String cell) {
-        this.cell = cell;
-    }
-
-
 
 }

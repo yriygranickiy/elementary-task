@@ -1,10 +1,10 @@
-package Handler;
+package handler;
 
-import Model.ChessBoard;
-import Service.ChessBoardService;
-import Utils.Console;
+import model.ChessBoard;
+import service.ChessBoardService;
+import utils.Console;
 
-public class ChessBoardHandler {
+public class ChessBoardHandler implements Handle {
 
     public void pucker(){
         System.out.print("Length: \n");
