@@ -17,9 +17,7 @@ public class Menu {
         menuHashMap.put(7, "Fibonacci row");
 
         for (Map.Entry<Integer, String> entry : menuHashMap.entrySet()) {
-            Integer key = entry.getKey();
-            String value = entry.getValue();
-            System.out.println(key + " - " + value);
+            System.out.println(entry.getKey() + " - " + entry.getValue());
         }
     }
 
