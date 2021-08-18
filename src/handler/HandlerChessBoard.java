@@ -1,20 +1,21 @@
 package handler;
 
 import model.ChessBoard;
-import service.ChessBoardService;
+import service.ServiceChessBoard;
 import utils.Console;
 
-public class ChessBoardHandler implements Handle {
+public class HandlerChessBoard implements Handle {
 
-    public void pucker(){
-        System.out.print("Length: \n");
+    public void pucker() {
+        System.out.print("Length: ");
         int length = Console.getNumber();
-        System.out.print("Width: \n");
+        System.out.print("Width: ");
         int width = Console.getNumber();
-        System.out.print("Cell: \n");
+        System.out.print("Cell: ");
         String cell = Console.getCell();
         ChessBoard chessBoard = new ChessBoard(length, width, cell);
-        ChessBoardService chessBoardService = new ChessBoardService(chessBoard);
+        ServiceChessBoard chessBoardService = new ServiceChessBoard(chessBoard);
         System.out.println(chessBoardService.build());
     }
+
 }

@@ -2,12 +2,12 @@ package service;
 
 import model.ChessBoard;
 
-public class ChessBoardService {
+public class ServiceChessBoard {
 
 
     ChessBoard chessBoard ;
 
-    public ChessBoardService(ChessBoard chessBoard) {
+    public ServiceChessBoard(ChessBoard chessBoard) {
         this.chessBoard = chessBoard;
     }
 

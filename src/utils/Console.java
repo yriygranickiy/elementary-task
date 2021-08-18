@@ -15,7 +15,11 @@ public class Console {
         return String.valueOf(cell);
     }
 
-    public static double getDouble(){
+    public static double getDouble() {
         return scanner.nextDouble();
+    }
+
+    public static String getString() {
+        return scanner.nextLine();
     }
 }
