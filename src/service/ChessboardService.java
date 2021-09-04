@@ -1,17 +1,17 @@
 package service;
 
-import model.ChessBoard;
+import model.Chessboard;
 
-public class ServiceChessBoard {
+public class ChessboardService {
 
+    private Chessboard chessBoard;
 
-    ChessBoard chessBoard ;
-
-    public ServiceChessBoard(ChessBoard chessBoard) {
+    public ChessboardService(Chessboard chessBoard) {
         this.chessBoard = chessBoard;
     }
 
-    public String build() {
+
+    public void build() {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < chessBoard.getLength(); i++) {
             for (int j = 0; j < chessBoard.getWidth(); j++) {
@@ -23,6 +23,7 @@ public class ServiceChessBoard {
             }
             result.append("\n");
         }
-        return String.valueOf(result);
+        System.out.println(result);
     }
+
 }

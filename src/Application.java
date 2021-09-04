@@ -1,36 +1,51 @@
-import handler.HandlerChessBoard;
-import handler.HandlerEnvelope;
+import handler.ChessboardHandler;
+import handler.EnvelopeHandler;
+import handler.Handleable;
+import handler.TriangleHandler;
 import utils.Console;
 import utils.Menu;
 
-
 public class Application {
+
     public static void main(String[] args) {
-        boolean exit = true;
+        boolean shouldContinue = true;
         Menu.getMenu();
-        while (exit) {
+        while (shouldContinue) {
             System.out.print("Input number: ");
-            int input = Console.getNumber();
-            switch (input) {
-                case 0:
+            switch (Console.getPositiveInt()) {
+                case 0 -> {
                     System.out.println("Exit");
-                    exit = false;
+                    shouldContinue = false;
+                }
+                case 1 -> {
+                    Handleable handleable = new ChessboardHandler();
+                    boolean shouldContinueTaskChessboard = true;
+                    while (shouldContinueTaskChessboard) {
+                        handleable.handle();
+                        shouldContinueTaskChessboard = Console.getConfirmation("Do you want to build a new chessboard ? yes/no");
+                    }
                     break;
-                case 1:
-                    System.out.println("Enter numbers for chessboard...");
-                    HandlerChessBoard chessBoardHandler = new HandlerChessBoard();
-                    chessBoardHandler.pucker();
-                    exit = false;
+                }
+                case 2 -> {
+                    Handleable handleable = new EnvelopeHandler();
+                    boolean shouldContinueTaskEnvelope = true;
+                    while (shouldContinueTaskEnvelope){
+                        handleable.handle();
+                        shouldContinueTaskEnvelope= Console.getConfirmation("Do you want try compare new envelope ? yes/no");
+                    }
                     break;
-                case 2:
-                    System.out.println("Enter width and length  for envelopes...");
-                    HandlerEnvelope envelopeHandler = new HandlerEnvelope();
-                    envelopeHandler.pucker();
-                    exit = false;
+                }
+                case 3 -> {
+                    Handleable handleable = new TriangleHandler();
+                    boolean shouldContinueTaskTriangle = true;
+                    while (shouldContinueTaskTriangle){
+                        handleable.handle();
+                        shouldContinueTaskTriangle = Console.getConfirmation("Do you want try compare new triangles ? yes/no");
+                    }
                     break;
+                }
             }
         }
-
-
     }
+
 }

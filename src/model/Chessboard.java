@@ -1,15 +1,16 @@
 package model;
 
-public class ChessBoard {
+public class Chessboard {
     private int length;
     private int width;
     private String cell;
 
-    public ChessBoard(int length, int width, String cell) {
+    public Chessboard(int length, int width, String cell) {
         this.length = length;
         this.width = width;
         this.cell = cell;
     }
+
     public int getLength() {
         return length;
     }

@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Menu {
+
     public static void getMenu() {
         Map<Integer, String> menuHashMap = new HashMap<>();
-
         menuHashMap.put(0, "Exit");
         menuHashMap.put(1, "Chess Board");
         menuHashMap.put(2, "Envelope");
@@ -15,10 +15,8 @@ public class Menu {
         menuHashMap.put(5, "Lucky tickets");
         menuHashMap.put(6, "Numerical sequence");
         menuHashMap.put(7, "Fibonacci row");
-
-        for (Map.Entry<Integer, String> entry : menuHashMap.entrySet()) {
-            System.out.println(entry.getKey() + " - " + entry.getValue());
-        }
+        menuHashMap.entrySet().stream()
+                .forEach(x -> System.out.println(x.getKey() + " - " + x.getValue()));
     }
 
 }

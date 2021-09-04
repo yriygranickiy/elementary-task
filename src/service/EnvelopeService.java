@@ -2,21 +2,23 @@ package service;
 
 import model.Envelope;
 
-public class ServiceEnvelope {
+public class EnvelopeService   {
 
-    public int build(Envelope firstEnvelope, Envelope secondEnvelope) {
+    public void build(Envelope firstEnvelope, Envelope secondEnvelope) {
         if ((firstEnvelope.getLength() < secondEnvelope.getLength() &&
                 firstEnvelope.getWidth() < secondEnvelope.getWidth()) ||
                 (firstEnvelope.getWidth() < secondEnvelope.getLength()) &&
                         firstEnvelope.getLength() < secondEnvelope.getLength()) {
-            return -1;
+            System.out.println("First envelope can be placed to second.");
         } else if ((firstEnvelope.getLength() > secondEnvelope.getLength() &&
                 firstEnvelope.getWidth() > secondEnvelope.getWidth()) ||
                 firstEnvelope.getLength() > secondEnvelope.getWidth() &&
                         firstEnvelope.getWidth() > secondEnvelope.getLength()) {
-            return 1;
+            System.out.println("Second envelope can be placed to first.");
+
         } else {
-            return 0;
+            System.out.println("Envelope can`t be placed.");
         }
     }
+
 }

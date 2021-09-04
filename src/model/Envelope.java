@@ -1,7 +1,7 @@
 package model;
 
 public class Envelope {
-    private  double width;
+    private double width;
     private double length;
 
     public Envelope(double width, double length) {
