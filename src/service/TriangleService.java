@@ -4,10 +4,11 @@ import model.Triangle;
 
 import java.util.InputMismatchException;
 
-public class TriangleService {
+public class TriangleService implements TriangleFactory {
     private Triangle triangle;
 
-    public Triangle build(String input) throws InputMismatchException {
+    @Override
+    public Triangle createTriangle(String input) {
         String[] split = input.split(",");
         String name = split[0].trim();
         double firstSide = Double.parseDouble(split[1].trim());
@@ -17,7 +18,7 @@ public class TriangleService {
             if (firstSide + secondSide <= thirdSide &&
                     firstSide + thirdSide <= secondSide &&
                     secondSide + thirdSide <= firstSide) {
-              throw new InputMismatchException("Envelope can`t be build");
+                throw new InputMismatchException("Envelope can`t be build");
             }
             triangle = new Triangle(name,firstSide,secondSide,thirdSide);
         } catch (NumberFormatException numberFormatException) {
@@ -25,5 +26,4 @@ public class TriangleService {
         }
         return triangle;
     }
-
 }
