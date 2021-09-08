@@ -4,26 +4,27 @@ import model.Triangle;
 
 import java.util.InputMismatchException;
 
+//TODO избавить от фабрики,сделать функцию для парсера
 public class TriangleService implements TriangleFactory {
+
     private Triangle triangle;
 
     @Override
     public Triangle createTriangle(String input) {
+        try {
+            triangle = parsingString(input);
+        } catch (NumberFormatException numberFormatException) {
+            throw new InputMismatchException("Incorrect data");
+        }
+        return triangle;
+    }
+
+    private Triangle parsingString(String input) {
         String[] split = input.split(",");
         String name = split[0].trim();
         double firstSide = Double.parseDouble(split[1].trim());
         double secondSide = Double.parseDouble(split[2].trim());
         double thirdSide = Double.parseDouble(split[3].trim());
-        try {
-            if (firstSide + secondSide <= thirdSide &&
-                    firstSide + thirdSide <= secondSide &&
-                    secondSide + thirdSide <= firstSide) {
-                throw new InputMismatchException("Envelope can`t be build");
-            }
-            triangle = new Triangle(name,firstSide,secondSide,thirdSide);
-        } catch (NumberFormatException numberFormatException) {
-            numberFormatException.printStackTrace();
-        }
-        return triangle;
+        return new Triangle(name, firstSide, secondSide, thirdSide);
     }
 }

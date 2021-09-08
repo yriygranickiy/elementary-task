@@ -3,24 +3,27 @@ package model;
 import java.util.Objects;
 
 public class Triangle {
-    private String name;
-    private double firstSide;
-    private double secondSide;
-    private double thirdSide;
-    private double area;
+
+    private final String name;
+    private final double firstSide;
+    private final double secondSide;
+    private final double thirdSide;
+    private final double area;
 
     public Triangle(String name, double firstSide, double secondSide, double thirdSide) {
         this.name = name;
         this.firstSide = firstSide;
         this.secondSide = secondSide;
         this.thirdSide = thirdSide;
-        double square = (firstSide + secondSide + thirdSide)/2;
-        area =Math.sqrt(square * (square - firstSide) * (square - secondSide) * (square - thirdSide));
+        double square = (firstSide + secondSide + thirdSide) / 2;
+        area = Math.sqrt(square * (square - firstSide) * (square - secondSide) * (square - thirdSide));
     }
 
     public double getArea() {
         return area;
     }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -32,6 +35,7 @@ public class Triangle {
                 && Double.compare(triangle.area, area) == 0
                 && Objects.equals(name, triangle.name);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(name, firstSide, secondSide, thirdSide, area);
@@ -39,8 +43,7 @@ public class Triangle {
 
     @Override
     public String toString() {
-        return
-                "Name : " + name + "\t" +
-                "Area : " + area ;
+        return name + " : " + area;
     }
+
 }

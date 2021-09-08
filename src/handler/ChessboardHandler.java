@@ -4,7 +4,13 @@ import model.Chessboard;
 import service.ChessboardService;
 import utils.Console;
 
-public class ChessboardHandler implements Handleable {
+public class ChessboardHandler extends Handler {
+
+    private final ChessboardService chessboardService;
+
+    public ChessboardHandler(ChessboardService chessboardService) {
+        this.chessboardService = chessboardService;
+    }
 
     public void handle() {
         System.out.print("Length: ");
@@ -14,8 +20,8 @@ public class ChessboardHandler implements Handleable {
         System.out.print("Cell: ");
         String cell = Console.getAnyChar();
         Chessboard chessBoard = new Chessboard(length, width, cell);
-        ChessboardService service = new ChessboardService(chessBoard);
-        service.build();
+        String result = chessboardService.build(chessBoard);
+        System.out.println(result);
     }
 
 }

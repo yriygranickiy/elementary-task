@@ -1,11 +1,12 @@
-import handler.ChessboardHandler;
-import handler.EnvelopeHandler;
-import handler.Handleable;
-import handler.TriangleHandler;
+import handler.*;
+import service.ChessboardService;
+import service.EnvelopeService;
 import utils.Console;
 import utils.Menu;
 
 public class Application {
+
+    private static final String TRY_AGAIN_YES_NO = "Do you want try again? yes/no";
 
     public static void main(String[] args) {
         boolean shouldContinue = true;
@@ -18,31 +19,32 @@ public class Application {
                     shouldContinue = false;
                 }
                 case 1 -> {
-                    Handleable handleable = new ChessboardHandler();
                     boolean shouldContinueTaskChessboard = true;
                     while (shouldContinueTaskChessboard) {
-                        handleable.handle();
-                        shouldContinueTaskChessboard = Console.getConfirmation("Do you want to build a new chessboard ? yes/no");
+                        new ChessboardHandler(new ChessboardService()).handle();
+                        shouldContinueTaskChessboard = Console.getConfirmation(TRY_AGAIN_YES_NO);
                     }
-                    break;
                 }
                 case 2 -> {
-                    Handleable handleable = new EnvelopeHandler();
                     boolean shouldContinueTaskEnvelope = true;
-                    while (shouldContinueTaskEnvelope){
-                        handleable.handle();
-                        shouldContinueTaskEnvelope= Console.getConfirmation("Do you want try compare new envelope ? yes/no");
+                    while (shouldContinueTaskEnvelope) {
+                        new EnvelopeHandler(new EnvelopeService()).handle();
+                        shouldContinueTaskEnvelope = Console.getConfirmation(TRY_AGAIN_YES_NO);
                     }
-                    break;
                 }
                 case 3 -> {
-                    Handleable handleable = new TriangleHandler();
                     boolean shouldContinueTaskTriangle = true;
-                    while (shouldContinueTaskTriangle){
-                        handleable.handle();
-                        shouldContinueTaskTriangle = Console.getConfirmation("Do you want try compare new triangles ? yes/no");
+                    while (shouldContinueTaskTriangle) {
+                        new TriangleHandler().handle();
+                        shouldContinueTaskTriangle = Console.getConfirmation(TRY_AGAIN_YES_NO);
                     }
-                    break;
+                }
+                case 4 -> {
+                    boolean shouldContinueFileParser = true;
+                    while (shouldContinueFileParser) {
+                        new FileParserHandler().handle();
+                        shouldContinueFileParser = Console.getConfirmation(TRY_AGAIN_YES_NO);
+                    }
                 }
             }
         }

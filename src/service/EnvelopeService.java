@@ -2,22 +2,24 @@ package service;
 
 import model.Envelope;
 
-public class EnvelopeService   {
+public class EnvelopeService {
+    //TODO изменить название переменных
+    public int build(Envelope firstEnvelope, Envelope secondEnvelope) {
 
-    public void build(Envelope firstEnvelope, Envelope secondEnvelope) {
-        if ((firstEnvelope.getLength() < secondEnvelope.getLength() &&
-                firstEnvelope.getWidth() < secondEnvelope.getWidth()) ||
-                (firstEnvelope.getWidth() < secondEnvelope.getLength()) &&
-                        firstEnvelope.getLength() < secondEnvelope.getLength()) {
-            System.out.println("First envelope can be placed to second.");
-        } else if ((firstEnvelope.getLength() > secondEnvelope.getLength() &&
-                firstEnvelope.getWidth() > secondEnvelope.getWidth()) ||
-                firstEnvelope.getLength() > secondEnvelope.getWidth() &&
-                        firstEnvelope.getWidth() > secondEnvelope.getLength()) {
-            System.out.println("Second envelope can be placed to first.");
-
+        final boolean firstExpression = firstEnvelope.getLength() < secondEnvelope.getLength()
+                && firstEnvelope.getWidth() < secondEnvelope.getWidth();
+        final boolean secondExpression = (firstEnvelope.getWidth() < secondEnvelope.getLength())
+                && firstEnvelope.getLength() < secondEnvelope.getLength();
+        final boolean thirdExpression = (firstEnvelope.getLength() > secondEnvelope.getLength()
+                && firstEnvelope.getWidth() > secondEnvelope.getWidth());
+        final boolean fourthExpression = firstEnvelope.getLength() > secondEnvelope.getWidth() &&
+                firstEnvelope.getWidth() > secondEnvelope.getLength();
+        if (firstExpression || secondExpression) {
+            return 1;
+        } else if (thirdExpression || fourthExpression) {
+            return -1;
         } else {
-            System.out.println("Envelope can`t be placed.");
+            return 0;
         }
     }
 

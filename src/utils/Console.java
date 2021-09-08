@@ -3,6 +3,7 @@ package utils;
 import java.util.Scanner;
 
 public class Console {
+
     private static final Scanner scanner = new Scanner(System.in);
 
     public static int getPositiveInt() {
@@ -30,7 +31,7 @@ public class Console {
             input = scanner.next();
             if (input.length() == 1) {
                 shouldContinue = false;
-            }else{
+            } else {
                 System.out.println("Please enter one char");
             }
         }
@@ -40,14 +41,14 @@ public class Console {
     public static double getPositiveDouble() {
         double positiveDouble = 0;
         boolean shouldContinue = true;
-        while(shouldContinue){
+        while (shouldContinue) {
             try {
                 positiveDouble = scanner.nextDouble();
-                if(positiveDouble < 0){
+                if (positiveDouble < 0) {
                     throw new Exception();
                 }
                 shouldContinue = false;
-            }catch (Exception exception){
+            } catch (Exception exception) {
                 System.out.println("Please enter positive double number:");
                 scanner.nextLine();
             }
@@ -56,7 +57,7 @@ public class Console {
     }
 
     public static String getString() {
-        String input = null;
+        String input;
         boolean shouldContinue = true;
         input = scanner.next();
         while (shouldContinue) {
@@ -68,8 +69,8 @@ public class Console {
         return input;
     }
 
-    public static boolean getConfirmation(String inputConfirmation) {
-        System.out.println(inputConfirmation);
+    public static boolean getConfirmation(String message) {
+        System.out.println(message);
         String input;
         boolean result = false;
         boolean shouldContinue = true;
@@ -90,4 +91,5 @@ public class Console {
         }
         return result;
     }
+
 }
