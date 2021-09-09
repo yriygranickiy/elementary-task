@@ -13,8 +13,11 @@ public class TriangleService implements TriangleFactory {
     public Triangle createTriangle(String input) {
         try {
             triangle = parsingString(input);
+            if(Double.isNaN(triangle.getArea())){
+                throw new InputMismatchException("A triangle with such sides cannot be built.");
+            }
         } catch (NumberFormatException numberFormatException) {
-            throw new InputMismatchException("Incorrect data");
+            throw new NumberFormatException("Incorrect data");
         }
         return triangle;
     }
