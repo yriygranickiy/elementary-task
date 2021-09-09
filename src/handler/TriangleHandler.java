@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 //TODO фабрику убрать , Comparable
 public class TriangleHandler extends Handler {
 
-    private final String ENTER_YES_NO = "Want enter next triangle ? yes/no";
+    private final String SHOULD_TRY_AGAIN_QUESTION = "Want enter next triangle ? yes/no";
 
     @Override
     public void handle() {
@@ -30,7 +30,7 @@ public class TriangleHandler extends Handler {
             } catch (InputMismatchException exception) {
                 System.out.println(exception.getMessage());
             }
-            shouldGetTriangle = Console.getConfirmation(ENTER_YES_NO);
+            shouldGetTriangle = Console.getConfirmation(SHOULD_TRY_AGAIN_QUESTION);
         }
         List<Triangle> sortedList = triangleList.stream()
                 .sorted(Comparator.comparingDouble(Triangle::getArea).reversed()).collect(Collectors.toList());
