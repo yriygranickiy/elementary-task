@@ -1,9 +1,9 @@
 package service;
 
-import model.Triangle;
+public class TriangleFactory {
 
-public interface TriangleFactory {
-
-    Triangle createTriangle(String input);
+    public ITriangleService getTriangle() {
+            return new TriangleService();
+    }
 
 }

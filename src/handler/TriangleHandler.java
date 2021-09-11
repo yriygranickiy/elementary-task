@@ -1,8 +1,7 @@
 package handler;
 
 import model.Triangle;
-import service.TriangleFactory;
-import service.TriangleService;
+import service.ITriangleService;
 import utils.Console;
 
 import java.util.ArrayList;
@@ -16,16 +15,21 @@ public class TriangleHandler extends Handler {
 
     private final String SHOULD_TRY_AGAIN_QUESTION = "Want enter next triangle ? yes/no";
 
+    private final ITriangleService iTriangleService;
+
+    public TriangleHandler(ITriangleService iTriangleService) {
+        this.iTriangleService = iTriangleService;
+    }
+
     @Override
     public void handle() {
-        List<Triangle> triangleList = new ArrayList<>();
-        TriangleFactory triangleFactory = new TriangleService();
         boolean shouldGetTriangle = true;
+        List<Triangle> triangleList = new ArrayList<>();
         while (shouldGetTriangle) {
             System.out.println("Enter triangle`s : name, first side, second side, third side");
             String input = Console.getString();
             try {
-                Triangle triangle = triangleFactory.createTriangle(input);
+                Triangle triangle = iTriangleService.createTriangle(input);
                 triangleList.add(triangle);
             } catch (InputMismatchException exception) {
                 System.out.println(exception.getMessage());

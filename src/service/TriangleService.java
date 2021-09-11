@@ -4,13 +4,12 @@ import model.Triangle;
 
 import java.util.InputMismatchException;
 
-//TODO избавить от фабрики,сделать функцию для парсера
-public class TriangleService implements TriangleFactory {
 
-    private Triangle triangle;
+public class TriangleService implements ITriangleService {
 
     @Override
     public Triangle createTriangle(String input) {
+        Triangle triangle;
         try {
             triangle = parsingString(input);
             if(Double.isNaN(triangle.getArea())){

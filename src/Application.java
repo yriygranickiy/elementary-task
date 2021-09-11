@@ -1,6 +1,6 @@
 import handler.*;
-import service.ChessboardService;
-import service.EnvelopeService;
+import model.Triangle;
+import service.*;
 import utils.Console;
 import utils.Menu;
 
@@ -35,14 +35,14 @@ public class Application {
                 case 3 -> {
                     boolean shouldContinueTaskTriangle = true;
                     while (shouldContinueTaskTriangle) {
-                        new TriangleHandler().handle();
+                        new TriangleHandler(new TriangleFactory().getTriangle()).handle();
                         shouldContinueTaskTriangle = Console.getConfirmation(SHOULD_TRY_AGAIN_QUESTION);
                     }
                 }
                 case 4 -> {
                     boolean shouldContinueFileParser = true;
                     while (shouldContinueFileParser) {
-                        new FileParserHandler().handle();
+                        new FileParserHandler(new FileParserService()).handle();
                         shouldContinueFileParser = Console.getConfirmation(SHOULD_TRY_AGAIN_QUESTION);
                     }
                 }

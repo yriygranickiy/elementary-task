@@ -2,10 +2,10 @@ package service;
 
 import model.Envelope;
 
-public class EnvelopeService {
-    //TODO изменить название переменных
-    public int build(Envelope firstEnvelope, Envelope secondEnvelope) {
+public class EnvelopeService implements IEnvelopeService {
 
+    @Override
+    public int build(Envelope firstEnvelope, Envelope secondEnvelope) {
         final boolean firstEnvelopeSide = firstEnvelope.getLength() < secondEnvelope.getLength()
                 && firstEnvelope.getWidth() < secondEnvelope.getWidth()
                 || (firstEnvelope.getWidth() < secondEnvelope.getLength())
