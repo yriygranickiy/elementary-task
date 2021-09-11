@@ -5,12 +5,10 @@ import service.ITriangleService;
 import utils.Console;
 
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.List;
-import java.util.stream.Collectors;
 
-//TODO фабрику убрать , Comparable
 public class TriangleHandler extends Handler {
 
     private final String SHOULD_TRY_AGAIN_QUESTION = "Want enter next triangle ? yes/no";
@@ -36,9 +34,10 @@ public class TriangleHandler extends Handler {
             }
             shouldGetTriangle = Console.getConfirmation(SHOULD_TRY_AGAIN_QUESTION);
         }
-        List<Triangle> sortedList = triangleList.stream()
-                .sorted(Comparator.comparingDouble(Triangle::getArea).reversed()).collect(Collectors.toList());
-        sortedList.forEach(x -> System.out.println(x.toString()));
+//        List<Triangle> sortedList = triangleList.stream()
+//                .sorted(Comparator.comparingDouble(Triangle::getArea).reversed()).collect(Collectors.toList());
+        Collections.sort(triangleList);
+        triangleList.forEach(x -> System.out.println(x.toString()));
     }
 
 }

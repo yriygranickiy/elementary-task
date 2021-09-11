@@ -2,7 +2,7 @@ package model;
 
 import java.util.Objects;
 
-public class Triangle {
+public class Triangle implements Comparable<Triangle> {
 
     private final String name;
     private final double firstSide;
@@ -46,4 +46,8 @@ public class Triangle {
         return name + " : " + area;
     }
 
+    @Override
+    public int compareTo(Triangle triangle) {
+       return Double.compare(triangle.area,this.area);
+    }
 }
