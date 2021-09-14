@@ -1,21 +1,22 @@
 package handler;
 
-import service.IFileParserService;
+import service.FileParserService;
 import utils.Console;
 
 public class FileParserHandler extends Handler {
 
-    private final IFileParserService iFileParserService;
+    private final FileParserService iFileParserService;
 
-    public FileParserHandler(IFileParserService iFileParserService) {
+    public FileParserHandler(FileParserService iFileParserService) {
         this.iFileParserService = iFileParserService;
     }
 
     @Override
     public void handle() {
-        System.out.println("Choose the task mode:\n" +
-                "1. Count number of strings in the text.\n" +
-                "2. Found and replace strings in the text.");
+        System.out.print("""
+                Choose the task mode:
+                1. Count number of strings in the text.
+                2. Found and replace strings in the text.""");
         int input = Console.getPositiveInt();
         switch (input) {
             case 1 -> {

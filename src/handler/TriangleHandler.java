@@ -1,7 +1,7 @@
 package handler;
 
 import model.Triangle;
-import service.ITriangleService;
+import service.TriangleService;
 import utils.Console;
 
 import java.util.ArrayList;
@@ -13,9 +13,9 @@ public class TriangleHandler extends Handler {
 
     private final String SHOULD_TRY_AGAIN_QUESTION = "Want enter next triangle ? yes/no";
 
-    private final ITriangleService iTriangleService;
+    private final TriangleService iTriangleService;
 
-    public TriangleHandler(ITriangleService iTriangleService) {
+    public TriangleHandler(TriangleService iTriangleService) {
         this.iTriangleService = iTriangleService;
     }
 

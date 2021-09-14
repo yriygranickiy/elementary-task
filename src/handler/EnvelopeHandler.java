@@ -1,15 +1,15 @@
 package handler;
 
 import model.Envelope;
-import service.IEnvelopeService;
+import service.EnvelopeService;
 import utils.Console;
 
 public class EnvelopeHandler extends Handler {
 
-    private final IEnvelopeService iEnvelopeService;
+    private final EnvelopeService envelopeService;
 
-    public EnvelopeHandler(IEnvelopeService iEnvelopeService) {
-        this.iEnvelopeService = iEnvelopeService;
+    public EnvelopeHandler(EnvelopeService envelopeService) {
+        this.envelopeService = envelopeService;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class EnvelopeHandler extends Handler {
         double secondEnvelopeWidth = Console.getPositiveDouble();
         Envelope firstEnvelope = new Envelope(firstEnvelopeWidth, firstEnvelopeLength);
         Envelope secondEnvelope = new Envelope(secondEnvelopeWidth, secondEnvelopeLength);
-        int result = iEnvelopeService.build(firstEnvelope, secondEnvelope);
+        int result = envelopeService.compareEnvelope(firstEnvelope, secondEnvelope);
         if (result == 1) {
             System.out.println("First envelope can be placed to second.");
         } else if (result == -1) {
