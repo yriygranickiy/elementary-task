@@ -4,41 +4,41 @@ import java.util.Objects;
 
 public class Triangle implements Comparable<Triangle> {
 
-    private final String name;
-    private final double firstSide;
-    private final double secondSide;
-    private final double thirdSide;
-    private final double area;
+    private String name;
+    private double area;
 
-    public Triangle(String name, double firstSide, double secondSide, double thirdSide) {
-        this.name = name;
-        this.firstSide = firstSide;
-        this.secondSide = secondSide;
-        this.thirdSide = thirdSide;
-        double square = (firstSide + secondSide + thirdSide) / 2;
-        area = Math.sqrt(square * (square - firstSide) * (square - secondSide) * (square - thirdSide));
+    public Triangle() {
     }
+
 
     public double getArea() {
         return area;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setArea(double firstSide,double secondSide, double thridSide) {
+        double perimetr = (firstSide+ secondSide+thridSide)/2;
+        this.area = Math.sqrt(perimetr*(perimetr-firstSide)*(perimetr - secondSide)*(perimetr - thridSide));
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Triangle triangle = (Triangle) o;
-        return Double.compare(triangle.firstSide, firstSide) == 0
-                && Double.compare(triangle.secondSide, secondSide) == 0
-                && Double.compare(triangle.thirdSide, thirdSide) == 0
-                && Double.compare(triangle.area, area) == 0
-                && Objects.equals(name, triangle.name);
+        return Double.compare(triangle.area, area) == 0 && Objects.equals(name, triangle.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, firstSide, secondSide, thirdSide, area);
+        return Objects.hash(name, area);
     }
 
     @Override
@@ -48,6 +48,6 @@ public class Triangle implements Comparable<Triangle> {
 
     @Override
     public int compareTo(Triangle triangle) {
-       return Double.compare(triangle.area,this.area);
+        return Double.compare(triangle.area, this.area);
     }
 }

@@ -4,40 +4,39 @@ import model.Triangle;
 import service.TriangleService;
 import utils.Console;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.InputMismatchException;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+
 
 public class TriangleHandler extends Handler {
 
     private final String SHOULD_TRY_AGAIN_QUESTION = "Want enter next triangle ? yes/no";
 
-    private final TriangleService iTriangleService;
+    private final TriangleService triangleService;
 
-    public TriangleHandler(TriangleService iTriangleService) {
-        this.iTriangleService = iTriangleService;
+    public TriangleHandler(TriangleService triangleService) {
+        this.triangleService = triangleService;
     }
+
+    List<Triangle> triangleList = new ArrayList<>();
 
     @Override
     public void handle() {
         boolean shouldGetTriangle = true;
-        List<Triangle> triangleList = new ArrayList<>();
         while (shouldGetTriangle) {
             System.out.println("Enter triangle`s : name, first side, second side, third side");
             String input = Console.getString();
             try {
-                Triangle triangle = iTriangleService.createTriangle(input);
+                Triangle triangle = triangleService.createTriangle(input);
                 triangleList.add(triangle);
             } catch (InputMismatchException exception) {
                 System.out.println(exception.getMessage());
             }
             shouldGetTriangle = Console.getConfirmation(SHOULD_TRY_AGAIN_QUESTION);
         }
-//        List<Triangle> sortedList = triangleList.stream()
-//                .sorted(Comparator.comparingDouble(Triangle::getArea).reversed()).collect(Collectors.toList());
-        Collections.sort(triangleList);
-        triangleList.forEach(x -> System.out.println(x.toString()));
+        List<Triangle> sortedList = triangleList.stream()
+                .sorted(Comparator.comparingDouble(Triangle::getArea).reversed()).collect(Collectors.toList());
+//        Collections.sort(triangleList);
+        sortedList.forEach(x -> System.out.println(x.toString()));
     }
-
 }

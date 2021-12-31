@@ -3,6 +3,8 @@ package handler;
 import service.FileParserService;
 import utils.Console;
 
+import java.io.FileNotFoundException;
+
 public class FileParserHandler extends Handler {
 
     private final FileParserService iFileParserService;
@@ -26,8 +28,8 @@ public class FileParserHandler extends Handler {
                 String findString = Console.getString();
                 try {
                     System.out.println(iFileParserService.getStringAndCount(findString));
-                } catch (NullPointerException nullPointerException) {
-                    throw new NullPointerException("File not found.");
+                } catch (FileNotFoundException fileNotFoundException) {
+                    System.out.println(fileNotFoundException.getMessage());
                 }
             }
             case 2 -> {
@@ -39,8 +41,8 @@ public class FileParserHandler extends Handler {
                 String replaceString = Console.getString();
                 try {
                     System.out.println(iFileParserService.getStringAndReplace(findString, replaceString));
-                } catch (NullPointerException nullPointerException) {
-                    throw new NullPointerException("File not found.");
+                } catch (FileNotFoundException fileNotFoundException) {
+                    System.out.println(fileNotFoundException.getMessage());
                 }
             }
         }

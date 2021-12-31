@@ -34,7 +34,7 @@ public class Application {
                 case 3 -> {
                     boolean shouldContinueTaskTriangle = true;
                     while (shouldContinueTaskTriangle) {
-                        new TriangleHandler(new FigureFactory().getTriangle()).handle();
+                        new TriangleHandler(new ImplTriangleService()).handle();
                         shouldContinueTaskTriangle = Console.getConfirmation(SHOULD_TRY_AGAIN_QUESTION);
                     }
                 }
@@ -43,6 +43,27 @@ public class Application {
                     while (shouldContinueFileParser) {
                         new FileParserHandler(new ImplFileParserService()).handle();
                         shouldContinueFileParser = Console.getConfirmation(SHOULD_TRY_AGAIN_QUESTION);
+                    }
+                }
+                case 5 -> {
+                    boolean shouldContinueNumberInWord = true;
+                    while (shouldContinueNumberInWord) {
+                        new NumberInWordsHandler(new ImplNumberInWordsService()).handle();
+                        shouldContinueNumberInWord = Console.getConfirmation(SHOULD_TRY_AGAIN_QUESTION);
+                    }
+                }
+                case 7 -> {
+                    boolean shouldNumberCount = true;
+                    while (shouldNumberCount) {
+                        new NumberCountHandler(new ImplNumberCountService()).handle();
+                        shouldNumberCount = Console.getConfirmation(SHOULD_TRY_AGAIN_QUESTION);
+                    }
+                }
+                case 8 ->{
+                    boolean shouldFibonacciNumber  = true;
+                    while (shouldFibonacciNumber){
+                        new FibonacciNumberHandler(new ImplFibonacciNumberService()).handle();
+                        shouldContinue = Console.getConfirmation(SHOULD_TRY_AGAIN_QUESTION);
                     }
                 }
             }
