@@ -4,7 +4,8 @@ import model.Triangle;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
+//import org.testng.annotations.Test;
 import service.ImplTriangleService;
 import service.TriangleService;
 

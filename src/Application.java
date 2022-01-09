@@ -66,6 +66,13 @@ public class Application {
                         shouldContinue = Console.getConfirmation(SHOULD_TRY_AGAIN_QUESTION);
                     }
                 }
+                case 9 ->{
+                    boolean shouldPowNumber = true;
+                    while (shouldPowNumber){
+                        new PowNumberHandler(new ImplPowNumberService()).handle();
+                        shouldContinue = Console.getConfirmation(SHOULD_TRY_AGAIN_QUESTION);
+                    }
+                }
             }
         }
     }
