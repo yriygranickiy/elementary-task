@@ -5,11 +5,10 @@ import utils.FileUtils;
 import java.io.FileNotFoundException;
 
 public class ImplFileParserService implements FileParserService {
-
     private String path;
 
     @Override
-    public int getStringAndCount(String input) throws FileNotFoundException {
+    public int getStringAndCount(String input) {
         String result = FileUtils.readFileToString(path).replaceAll(input, "");
         return (FileUtils.readFileToString(path).length() - result.length()) / input.length();
     }
@@ -22,11 +21,14 @@ public class ImplFileParserService implements FileParserService {
     }
 
     @Override
-    public void getPath(String path) {
-        this.path = path;
+    public String getPath() {
+        return path;
     }
 
+    @Override
     public void setPath(String path) {
         this.path = path;
     }
+
+
 }

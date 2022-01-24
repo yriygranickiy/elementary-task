@@ -3,11 +3,13 @@ import service.*;
 import utils.Console;
 import utils.Menu;
 
+import java.io.FileNotFoundException;
+
 public class Application {
 
     private static final String SHOULD_TRY_AGAIN_QUESTION = "Do you want try again? yes/no";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         boolean shouldContinue = true;
         Menu.getMenu();
         while (shouldContinue) {
@@ -50,6 +52,13 @@ public class Application {
                     while (shouldContinueNumberInWord) {
                         new NumberInWordsHandler(new ImplNumberInWordsService()).handle();
                         shouldContinueNumberInWord = Console.getConfirmation(SHOULD_TRY_AGAIN_QUESTION);
+                    }
+                }
+                case 6 ->{
+                    boolean shouldContinueLuckyTicket = true;
+                    while (shouldContinueLuckyTicket){
+                        new LuckyTicketHandler(new ImplLuckyTicketService()).handle();
+                        shouldContinueLuckyTicket = Console.getConfirmation(SHOULD_TRY_AGAIN_QUESTION);
                     }
                 }
                 case 7 -> {

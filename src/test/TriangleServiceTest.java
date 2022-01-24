@@ -5,7 +5,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-//import org.testng.annotations.Test;
 import service.ImplTriangleService;
 import service.TriangleService;
 
@@ -19,7 +18,6 @@ public class TriangleServiceTest {
 
     @BeforeAll
     public static void init() {
-        triangleService = new ImplTriangleService();
         System.out.println("TriangleService test started");
     }
 

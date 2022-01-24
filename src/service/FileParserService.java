@@ -8,5 +8,7 @@ public interface FileParserService {
 
      String getStringAndReplace(String input, String replace) throws FileNotFoundException;
 
-     void getPath(String path);
+     String getPath();
+
+     void setPath(String path);
 }

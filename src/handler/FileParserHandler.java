@@ -14,8 +14,8 @@ public class FileParserHandler extends Handler {
     }
 
     @Override
-    public void handle() {
-        System.out.print("""
+    public void handle() throws FileNotFoundException {
+        System.out.println("""
                 Choose the task mode:
                 1. Count number of strings in the text.
                 2. Found and replace strings in the text.""");
@@ -23,27 +23,19 @@ public class FileParserHandler extends Handler {
         switch (input) {
             case 1 -> {
                 System.out.print("Enter filepath:");
-                iFileParserService.getPath(Console.getString());
+                iFileParserService.setPath(Console.getString());
                 System.out.print("Enter string:");
                 String findString = Console.getString();
-                try {
-                    System.out.println(iFileParserService.getStringAndCount(findString));
-                } catch (FileNotFoundException fileNotFoundException) {
-                    System.out.println(fileNotFoundException.getMessage());
-                }
+                System.out.println(iFileParserService.getStringAndCount(findString));
             }
             case 2 -> {
                 System.out.print("Enter filepath:");
-                iFileParserService.getPath(Console.getString());
+                iFileParserService.setPath(Console.getString());
                 System.out.print("Enter string to find:");
                 String findString = Console.getString();
                 System.out.print("Enter string to replace:");
                 String replaceString = Console.getString();
-                try {
-                    System.out.println(iFileParserService.getStringAndReplace(findString, replaceString));
-                } catch (FileNotFoundException fileNotFoundException) {
-                    System.out.println(fileNotFoundException.getMessage());
-                }
+                System.out.println(iFileParserService.getStringAndReplace(findString, replaceString));
             }
         }
     }
