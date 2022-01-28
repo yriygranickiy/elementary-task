@@ -8,7 +8,7 @@ public class ImplLuckyTicketService implements LuckyTicketService {
     private final String TYPE_PITER = "piter";
 
     @Override
-    public int count(String filePath, String numberTicket) {
+    public int count(String filePath, int numberTicket) {
         int[] numberLess = getNumberForTicket(numberTicket);
         int result = 0;
         switch (filePath) {
@@ -53,9 +53,9 @@ public class ImplLuckyTicketService implements LuckyTicketService {
         return result;
     }
 
-    public int[] getNumberForTicket(String type) {
-        String[] value = type.split("");
-        int[] number = Arrays.stream(value).mapToInt(Integer::parseInt).toArray();
+    public int[] getNumberForTicket(int type) {
+        String value = Integer.toString(type);
+        int[] number = Arrays.stream(value.split("")).mapToInt(Integer::parseInt).toArray();
         return number;
     }
 }

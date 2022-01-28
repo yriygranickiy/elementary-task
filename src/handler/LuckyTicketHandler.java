@@ -19,7 +19,7 @@ public class LuckyTicketHandler extends Handler {
         System.out.print("Enter path: ");
         String type = FileUtils.readFileToString(Console.getString());
         System.out.print("Enter ticket: ");
-        String number = Console.getString();
+        int number = Console.getPositiveInt();
         System.out.println("Number lucky ticket:" + luckyTicketService.count(type, number));
     }
 }

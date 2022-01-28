@@ -42,7 +42,6 @@ public class ImplTriangleService implements TriangleService {
             throw new InputMismatchException("A triangle with such sides cannot be built.");
         }
         resultMap.put(nameTriangle, sidesList);
-
         return resultMap;
     }
 

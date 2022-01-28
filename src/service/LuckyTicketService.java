@@ -1,5 +1,5 @@
 package service;
 
 public interface LuckyTicketService {
-    int count(String filePath, String numberTicket);
+    int count(String filePath, int numberTicket);
 }
